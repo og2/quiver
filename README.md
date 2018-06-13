@@ -2,6 +2,7 @@
 Quiver is a library that facilitates queries on MongoDB Documents.
 
 ## Document
+```
 {
     "carsBrandArray": [
         {
@@ -26,16 +27,20 @@ Quiver is a library that facilitates queries on MongoDB Documents.
         },
     ]    
 }
+```
 
 ## Example
+```
 quiver.Query(
     quiver.AND(
         "carsBrandArray => brand == BMW && value >= 500",
         "carsBrandArray => brand == Chevy && value <= 350",
     ),
 )
+```
 
 ## MongoDB Query
+```
 {
     "$and": [
         {
@@ -60,7 +65,10 @@ quiver.Query(
         }
     ]
 }
+```
 
 ## Results
+```
 BMW i8
 Chevy Malibu
+```

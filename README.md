@@ -59,7 +59,7 @@ quiver.Query(
         {
             "carsBrandArray": {
                 "$elemMatch": {
-                    "name": "BMW",
+                    "brand": "BMW",
                     "value": {
                         "$gte": 500
                     }
@@ -69,7 +69,7 @@ quiver.Query(
         {
             "carsBrandArray": {
                 "$elemMatch": {
-                    "name": "Chevy",
+                    "brand": "Chevy",
                     "value": {
                         "$lte": 350
                     }

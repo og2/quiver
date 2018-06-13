@@ -31,12 +31,14 @@ Quiver is a library that facilitates queries on MongoDB Documents.
 
 ## GoLang
 ```
-query := collection.Find(quiver.Query(
-    quiver.AND(
-        "carsBrandArray => brand == BMW && value >= 500",
-        "carsBrandArray => brand == Chevy && value <= 350",
+query := collection.Find(
+    quiver.Query(
+        quiver.AND(
+            "carsBrandArray => brand == BMW && value >= 500",
+            "carsBrandArray => brand == Chevy && value <= 350",
+        ),
     ),
-))
+)
 ```
 
 ## Example

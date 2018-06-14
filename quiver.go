@@ -14,6 +14,10 @@ import (
 type M map[string]interface{}
 
 func AND(args ...string) M {
+
+	if len(args) <= 0 {
+		return nil
+	}
 	parentMap := M{
 		"$and": []M{},
 	}
@@ -58,6 +62,15 @@ func AND(args ...string) M {
 			}
 			conditionMap[strings.Split(e, "=>")[0]].(M)["$elemMatch"] = expMap
 			parentMap["$and"] = append(parentMap["$and"].([]M), conditionMap)
+		} else {
+			if thisHas(eTemp, "==") { //isArray
+				obj := strings.Split(eTemp, "==")
+				if isNumber(obj[1]) {
+					parentMap["$and"] = append(parentMap["$and"].([]M), M{obj[0]: stringToInteger(obj[1])})
+				} else {
+					parentMap["$and"] = append(parentMap["$and"].([]M), M{obj[0]: obj[1]})
+				}
+			}
 		}
 	}
 	return parentMap
